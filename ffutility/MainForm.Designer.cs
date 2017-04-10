@@ -21,6 +21,7 @@ namespace ffutility
 		private System.Windows.Forms.NumericUpDown numericValor;
 		private System.Windows.Forms.Button btnConvert;
 		private System.Windows.Forms.Button btnmakeGif;
+		private System.Windows.Forms.Button btnImagen;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -50,6 +51,7 @@ namespace ffutility
 			this.numericValor = new System.Windows.Forms.NumericUpDown();
 			this.btnConvert = new System.Windows.Forms.Button();
 			this.btnmakeGif = new System.Windows.Forms.Button();
+			this.btnImagen = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericValor)).BeginInit();
 			this.SuspendLayout();
@@ -57,7 +59,7 @@ namespace ffutility
 			// btnRun
 			// 
 			this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnRun.Location = new System.Drawing.Point(615, 234);
+			this.btnRun.Location = new System.Drawing.Point(615, 211);
 			this.btnRun.Name = "btnRun";
 			this.btnRun.Size = new System.Drawing.Size(45, 35);
 			this.btnRun.TabIndex = 0;
@@ -89,13 +91,13 @@ namespace ffutility
 			this.textBoxdatos.Multiline = true;
 			this.textBoxdatos.Name = "textBoxdatos";
 			this.textBoxdatos.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxdatos.Size = new System.Drawing.Size(262, 219);
+			this.textBoxdatos.Size = new System.Drawing.Size(262, 196);
 			this.textBoxdatos.TabIndex = 3;
 			// 
 			// numericValor
 			// 
 			this.numericValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.numericValor.Location = new System.Drawing.Point(398, 241);
+			this.numericValor.Location = new System.Drawing.Point(398, 211);
 			this.numericValor.Maximum = new decimal(new int[] {
 			6,
 			0,
@@ -118,7 +120,7 @@ namespace ffutility
 			// btnConvert
 			// 
 			this.btnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnConvert.Location = new System.Drawing.Point(516, 234);
+			this.btnConvert.Location = new System.Drawing.Point(516, 211);
 			this.btnConvert.Name = "btnConvert";
 			this.btnConvert.Size = new System.Drawing.Size(93, 35);
 			this.btnConvert.TabIndex = 5;
@@ -129,7 +131,7 @@ namespace ffutility
 			// btnmakeGif
 			// 
 			this.btnmakeGif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnmakeGif.Location = new System.Drawing.Point(465, 234);
+			this.btnmakeGif.Location = new System.Drawing.Point(465, 211);
 			this.btnmakeGif.Name = "btnmakeGif";
 			this.btnmakeGif.Size = new System.Drawing.Size(45, 35);
 			this.btnmakeGif.TabIndex = 6;
@@ -137,11 +139,24 @@ namespace ffutility
 			this.btnmakeGif.UseVisualStyleBackColor = true;
 			this.btnmakeGif.Click += new System.EventHandler(this.BtnmakeGifClick);
 			// 
+			// btnImagen
+			// 
+			this.btnImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnImagen.ForeColor = System.Drawing.Color.Red;
+			this.btnImagen.Location = new System.Drawing.Point(398, 239);
+			this.btnImagen.Name = "btnImagen";
+			this.btnImagen.Size = new System.Drawing.Size(61, 30);
+			this.btnImagen.TabIndex = 7;
+			this.btnImagen.Text = "&Image";
+			this.btnImagen.UseVisualStyleBackColor = true;
+			this.btnImagen.Click += new System.EventHandler(this.BtnImagenClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(670, 281);
+			this.Controls.Add(this.btnImagen);
 			this.Controls.Add(this.btnmakeGif);
 			this.Controls.Add(this.btnConvert);
 			this.Controls.Add(this.numericValor);
@@ -152,6 +167,7 @@ namespace ffutility
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "MainForm";
 			this.Text = "ffutility";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericValor)).EndInit();

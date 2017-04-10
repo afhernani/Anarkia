@@ -74,6 +74,7 @@ namespace ffutility
 			Index = 0;
 			btnConvert.Enabled = false;
 			btnmakeGif.Enabled = false;
+			OpenDataInit();
 		}
 		void BtnConvertClick(object sender, EventArgs e)
 		{
@@ -100,6 +101,71 @@ namespace ffutility
 			textBoxdatos.Text += newline + "Make-gif from file: => " + Path.GetFileName(videofile.Path) + Environment.NewLine;
 			//
 			btnmakeGif.Enabled = false;
+		}	
+		/// <summary>
+        /// guardar datos al fichero ini.
+        /// </summary>
+        private void SaveDataIni()
+        {
+            //escribir codigo aqui
+            string dir = Environment.CurrentDirectory;
+            string namefile = Path.Combine(dir, "dat.ini");
+            IniFile inifile = new IniFile(namefile);
+            inifile.Write("File", textBoxfile.Text);
+            inifile.Write("File-Name", Path.GetFileName(textBoxfile.Text));
+            inifile.Write("DefaultVolume", "100", "Audio");
+            inifile.Write("HomePage", textBoxfile.Text, "Web");
+            inifile.Write("name-Scraping-result",textBoxfile.Text,"temporal");
+            inifile.Write("doc-html-down",textBoxfile.Text,"temporal");
+            inifile.Write("DefaultVolume", "80", "Audio");
+            //recuperamos una clave.
+            //var res = inifile.Read("doc-html-down", "temporal");
+            //txtBoxResult.Text = res;
+            Debug.WriteLine("Proceso de guardado en fichero ini terminado...");
+        }
+        /// <summary>
+        /// open data ini
+        /// </summary>
+        private void OpenDataInit()
+        {
+            string namefile = Path.Combine(Environment.CurrentDirectory, "dat.ini");
+            if (!File.Exists(namefile)) return; //si no existe salimos para evitar errores.
+            IniFile inifile = new IniFile(namefile);
+            var res = inifile.Read("File");
+            textBoxfile.Text = res;
+			res = inifile.Read("File-Name");
+            textBoxdatos.Text = res;
+            //res = inifile.Read("HomePage");
+            //txtUrl.Text = res;
+            //ClearCachedSWFFiles();
+            //webBrowser1.Navigate(res); //= new Uri(res);
+            /*if (inifile.KeyExists("name-Scraping-result", "temporal"))
+            {
+                var script = inifile.Read("name-Scraping-result", "temporal");
+                btnHtml.Tag = script;
+                txtBoxResult.Text = @"asignado el fichero temporal de scraping de la" +
+                                    $"ultima secion {script}";
+            }*/
+        }
+		/// <summary>
+		/// save data ini to closing form
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+        void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			SaveDataIni();
 		}
+		void BtnImagenClick(object sender, EventArgs e)
+		{
+			Converter conv = new Converter();
+			if(videofile==null && File.Exists(textBoxfile.Text))
+			{	   	
+				pictureBox.Image = conv.getImage(textBoxfile.Text);
+				return;
+			}
+			pictureBox.Image = conv.getImage(videofile);
+		}
+        
 	}
 }

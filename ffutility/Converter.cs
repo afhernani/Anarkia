@@ -9,6 +9,7 @@
  * */
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.IO;
@@ -769,6 +770,49 @@ namespace ffutility
 			return ou;
 		}
 
+		#endregion
+		#region get-image
+		public System.Drawing.Image getImage(string inputpath)
+		{
+			VideoFile vf = null;
+			try {
+				vf = new VideoFile(inputpath);
+			} catch (Exception ex) {
+				throw new ConvertException(ex.ToString());
+			}
+
+			System.Drawing.Image oo = getImage(vf);
+			return oo;
+		}
+		public System.Drawing.Image getImage(VideoFile input)
+		{
+			if (!input.infoGathered) {
+				GetVideoInfo(input);
+			}
+			System.Drawing.Image ou;
+			string temp = Path.GetTempPath();
+			Debug.WriteLine(temp + " Image thumbails from file");
+			int valor = input.DurationMs / 4;//imagen a 1/3 del tiempo total.
+			if (valor <= 0)
+				valor = 60;
+			string fil = System.Guid.NewGuid().ToString();
+			string filename = fil + ".jpg";
+			string finalpath = Path.Combine(temp, filename);
+			string Params = String.Format("-ss {1} -i \"{0}\" -vframes {1} \"{2}\" -hide_banner", input.Path, valor, finalpath);
+			Debug.WriteLine(Params);
+			OnlyRunProcess(Params);
+
+			ou=LoadImageFromFile(finalpath);
+			try {
+				File.Delete(finalpath);
+			} catch (Exception ex) {
+				Debug.WriteLine(ex.Message);
+				throw new ConvertException(ex.ToString());
+			}
+			
+			Debug.WriteLine("fin de proceso de extraccion");
+			return ou;
+		}
 		#endregion
 	}
 
