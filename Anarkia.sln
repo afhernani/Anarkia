@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ffutility", "ffutility\ffut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proper", "Proper\Proper.csproj", "{A8BCCB1C-3DB1-45E8-B99C-4D19A2089C77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Derive", "Derive\Derive.csproj", "{AABA11D6-44E9-4E03-80E0-2B17CCA0185A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,5 +108,9 @@ Global
 		{A8BCCB1C-3DB1-45E8-B99C-4D19A2089C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8BCCB1C-3DB1-45E8-B99C-4D19A2089C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8BCCB1C-3DB1-45E8-B99C-4D19A2089C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABA11D6-44E9-4E03-80E0-2B17CCA0185A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABA11D6-44E9-4E03-80E0-2B17CCA0185A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABA11D6-44E9-4E03-80E0-2B17CCA0185A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABA11D6-44E9-4E03-80E0-2B17CCA0185A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
