@@ -27,7 +27,7 @@ namespace Parser
 		public static bool IsWhitespace(this char c)
 		{
 			return c == ' ' || c == '\n' ||
-				c == '\r' || c == '\t' || c == '\f';
+			c == '\r' || c == '\t' || c == '\f';
 		}
 
 		/// <summary>
@@ -75,12 +75,65 @@ namespace Parser
 		/// <returns>True if a string is a valid identifier, false otherwise</returns>
 		public static bool IsValidVariable(this string s)
 		{
-			if (!s[0].IsAlphaNumeric())
-			{
+			if (!s[0].IsAlphaNumeric()) {
 				return false;
 			}
 
 			return s.All((c) => c.IsAlphaNumeric() || c == '_');
+		}
+		/// <summary>
+		/// Funcion static.
+		/// Convierte un string en un Array y elimina todos los espacios vacios.
+		/// Devuelve el Array string 'limpio de null o empty'
+		/// </summary>
+		/// <param name="cadena"></param>
+		/// <returns></returns>
+		public static string[] DelEmptyChar(string cadena)
+		{
+			string[] datos = cadena.Split(" ".ToCharArray());
+			datos = datos.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+			return datos;
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="cadena"></param>
+		/// <returns></returns>
+		public static string DelEmptyString(string cadena)
+		{
+			string[] datos = cadena.Split(" ".ToCharArray());
+			datos = datos.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+			return StringArrayToString(datos);
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="array"></param>
+		/// <returns></returns>
+		public static string StringArrayToString(string[] array)
+		{
+			//
+			// Concatenate all the elements into a StringBuilder.
+			//
+			StringBuilder builder = new StringBuilder();
+			foreach (string value in array) {
+				builder.Append(value);
+				//builder.Append('.');
+			}
+			return builder.ToString();
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="array"></param>
+		/// <returns></returns>
+		public static string StringArrayToStringJoin(string[] array)
+		{
+			//
+			// Use string Join to concatenate the string elements.
+			//
+			string result = string.Join(".", array);
+			return result;
 		}
 	}
 }

@@ -112,6 +112,9 @@ namespace Parser
 				return null;
 			ch = Convert.ToChar(Str.Read());
 			switch (ch) {
+				case ' ':
+					return null;
+					break;
 				case '\0':
 					return new Token(ch);
 					break;
@@ -124,6 +127,7 @@ namespace Parser
 				case '*': 
 				case '/': 
 				case '%':
+					Debug.WriteLine(ch);
 					return new Token(ch);        // let each character represent itself
 					break;
 				case '.':

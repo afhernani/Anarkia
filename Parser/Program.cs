@@ -140,12 +140,14 @@ namespace Parser
 		//
 		static void UseTokenTest()
 		{
-			const string cad = "21.8+3-5/3.11";
-			TokenStream tkenstr = new TokenStream(cad);
+			string cad = "21.8    +3-5/3.11";
+			cad = TextUtils.DelEmptyString(cad);
+			TokenStream tkenstr = new TokenStream(cad.Trim());
 			Token t;
 			while (!tkenstr.EndOfStream) {
 				t=tkenstr.get();
-				Console.WriteLine("{0} : {1}", t.Kind, t.Val);
+				if(t!=null)
+					Console.WriteLine("{0} : {1}", t.Kind, t.Val);
 			}
 		}
 	}
