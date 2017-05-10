@@ -140,7 +140,7 @@ namespace Parser
 		//
 		static void UseTokenTest()
 		{
-			string cad = "21.8+3-5/3.11";
+			string cad = "21.8+3-5/3.11*(10+6+2)+4";
 			cad = TextUtils.DelEmptyString(cad);
 			TokenStream tkenstr = new TokenStream(cad.Trim());
 			Token t;
