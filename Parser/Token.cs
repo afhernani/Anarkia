@@ -169,7 +169,7 @@ namespace Parser
 					}
 					//break;
 				default:
-					throw new Exception("exception get");
+					throw new Exception("exception get Token");
 					//break;					
 			}
 		}
