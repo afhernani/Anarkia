@@ -13,6 +13,13 @@ using System.Diagnostics;
 
 namespace Parser
 {
+	public enum Kind
+	{
+		number, 
+		variable,
+		quit,
+		print,		
+	}
 	/// <summary>
 	/// Description of Token.
 	/// </summary>
@@ -25,6 +32,7 @@ namespace Parser
 		// t.kind==quit means that t is a quit Token
 		public const char print = ';';
 		//t.kind==print means that t is a print Token
+		public const char end = '|';
 		public const string pront = "> ";
 		//pront de consola
 		public const string result = "= ";
@@ -109,14 +117,14 @@ namespace Parser
 			}
 			char ch;
 			if (Str.EndOfStream)
-				return null;
+				return new Token(Token.end);
 			ch = Convert.ToChar(Str.Read());
 			switch (ch) {
 				case ' ':
 					return null;
 					break;
 				case '\0':
-					return new Token(ch);
+					return new Token(Token.quit);
 					break;
 				case Token.print:
 				case Token.quit:
@@ -190,4 +198,95 @@ namespace Parser
 		/// </summary>
 		private Token buffer{ get; set; }
 	}
+	
+	public class Variable
+	{
+		public string name{ get; set; }
+		public double value{ get; set; }
+		Variable(string n, double v)
+		{
+			name = n;
+			value = v;
+		}
+	}
+	
+	public class Expression
+	{
+		TokenStream ts;
+		
+		public Expression(TokenStream ts)
+		{
+			this.ts = ts;
+		}
+		public double EvaluaExpression()
+		{
+			double left = Term();
+			Token t = ts.get();
+			while (true) 
+			{
+				switch (t.Kind) 
+				{
+					case '+':
+						left += Term();
+						t = ts.get();
+						break;
+					case '-':
+						left -= Term();
+						t = ts.get();
+						break;
+					default:
+						ts.putback(t);
+						return left;
+				}
+			}
+			
+		}
+
+		double Term()
+		{
+			double left = Primary();
+			Token t = ts.get();
+			while (true)
+			{
+				switch (t.Kind) 
+				{
+					case '*':
+						left *= Primary();
+						t = ts.get();
+						break;
+					case '/':
+						double d = Primary();
+						if (d == 0)
+							throw new Exception("Divicion por cero..");
+						left /= d;
+						t = ts.get();
+						break;
+					default:
+						ts.putback(t);
+						return left;	
+				}
+			}
+		}
+
+		double Primary()
+		{
+			Token t = ts.get();
+			switch (t.Kind) 
+			{
+				case '(': //maneja una (expresion)
+					{
+						double d = EvaluaExpression();
+						t = ts.get();
+						if (t.Kind != ')')
+							throw new Exception(" ')' excepcion.");
+						return d;
+					}
+				case '8':
+					return t.Val;
+				default:
+					throw new Exception("Primary exception...");
+			}
+		}
+	}
+	
 }

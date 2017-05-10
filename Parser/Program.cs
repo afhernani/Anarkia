@@ -140,7 +140,7 @@ namespace Parser
 		//
 		static void UseTokenTest()
 		{
-			string cad = "21.8    +3-5/3.11";
+			string cad = "21.8+3-5/3.11";
 			cad = TextUtils.DelEmptyString(cad);
 			TokenStream tkenstr = new TokenStream(cad.Trim());
 			Token t;
@@ -149,6 +149,18 @@ namespace Parser
 				if(t!=null)
 					Console.WriteLine("{0} : {1}", t.Kind, t.Val);
 			}
+			Console.WriteLine("Evalua la expresion ...");
+			try 
+			{
+				Expression expr = new Expression(new TokenStream(cad.Trim()));
+				double d = expr.EvaluaExpression();
+				Console.WriteLine(d);
+			} 
+			catch (Exception ex) 
+			{
+				Console.WriteLine(ex.Message);
+			}			
 		}
+		//
 	}
 }
