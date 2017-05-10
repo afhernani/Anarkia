@@ -162,5 +162,21 @@ namespace Parser
 			}			
 		}
 		//
+		static void Loop()
+		{
+			bool userWantsToExit = false;
+
+			//get input			
+			while(!userWantsToExit)
+			{
+			
+			  //do calc;
+			  //display results;
+			  //display text;
+			  //get input;
+			  //if (input == "exit") 
+			    //userWantsToExit = true;
+			}	
+		}
 	}
 }

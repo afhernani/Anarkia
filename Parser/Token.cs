@@ -122,14 +122,16 @@ namespace Parser
 			switch (ch) {
 				case ' ':
 					return null;
-					break;
+					//break;
 				case '\0':
 					return new Token(Token.quit);
-					break;
+					//break;
 				case Token.print:
 				case Token.quit:
-				case '(': 
+				case '(':
+					return new Token('(', 0);
 				case ')': 
+					return new Token(')', 0);
 				case '+': 
 				case '-': 
 				case '*': 
@@ -137,7 +139,7 @@ namespace Parser
 				case '%':
 					Debug.WriteLine(ch);
 					return new Token(ch);        // let each character represent itself
-					break;
+					//break;
 				case '.':
 				case '0':
 				case '1':
@@ -165,10 +167,10 @@ namespace Parser
 						Debug.WriteLine(strb.ToString());
 						return new Token(Token.number, Convert.ToDouble(strb.ToString(), System.Globalization.CultureInfo.InvariantCulture));
 					}
-					break;
+					//break;
 				default:
 					throw new Exception("exception get");
-					break;					
+					//break;					
 			}
 		}
 		/// <summary>
