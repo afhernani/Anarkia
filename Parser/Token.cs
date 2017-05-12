@@ -4,9 +4,50 @@
  * Fecha: 01/05/2017
  * Hora: 11:25
  * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
+ The grammar for input is:
+	Statement:
+		Expression
+		Print
+		Quit
+	Print:
+		;
+	Quit:
+		q
+	Expression:
+		Term
+		Expression + Term
+		Expression – Term
+	Term:
+		Primary
+		Term * Primary
+		Term / Primary
+		Term % Primary
+	Primary:
+		Number
+		( Expression )
+		– Primary
+		+ Primary
+	Number:
+		floating-point-literal
+	Input comes from cin through the Token_stream called ts.
+ *
+ * 
+ * gramatica para variables
+   Calculation:
+		Statement
+		Print
+		Quit
+		Calculation Statement
+	Statement:
+		Declaration
+		Expression
+	Declaration:
+		"let" Name "=" Expression
+ * 
+ * 
  */
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
@@ -15,10 +56,10 @@ namespace Parser
 {
 	public enum Kind
 	{
-		number, 
+		number,
 		variable,
 		quit,
-		print,		
+		print,
 	}
 	/// <summary>
 	/// Description of Token.
@@ -46,6 +87,7 @@ namespace Parser
 		/// for numbers: a value 
 		/// </summary>
 		public double Val{ get; set; }
+		public string Name{ get; set; }
 		/// <summary>
 		/// make a Token from a char and a double
 		/// </summary>
@@ -55,6 +97,11 @@ namespace Parser
 		{
 			Kind = ch;
 			Val = val;
+		}
+		public Token(char ch, string name)
+		{
+			Kind = ch;
+			Name = name;
 		}
 		/// <summary>
 		/// make a Token from a char
@@ -121,17 +168,14 @@ namespace Parser
 			ch = Convert.ToChar(Str.Read());
 			switch (ch) {
 				case ' ':
-					return null;
-					//break;
+					//Ignore(' ');
+					return get();
 				case '\0':
-					return new Token(Token.quit);
-					//break;
 				case Token.print:
 				case Token.quit:
+				case '=':
 				case '(':
-					return new Token('(', 0);
 				case ')': 
-					return new Token(')', 0);
 				case '+': 
 				case '-': 
 				case '*': 
@@ -139,7 +183,7 @@ namespace Parser
 				case '%':
 					Debug.WriteLine(ch);
 					return new Token(ch);        // let each character represent itself
-					//break;
+			//break;
 				case '.':
 				case '0':
 				case '1':
@@ -167,10 +211,32 @@ namespace Parser
 						Debug.WriteLine(strb.ToString());
 						return new Token(Token.number, Convert.ToDouble(strb.ToString(), System.Globalization.CultureInfo.InvariantCulture));
 					}
-					//break;
+			//break;
 				default:
-					throw new Exception("exception get Token");
-					//break;					
+					if (TextUtils.IsAlphabetic(ch)) 
+					{
+						StringBuilder name = new StringBuilder();
+						
+						name.Append(ch);
+						
+						while (!Str.EndOfStream) 
+						{
+							if (TextUtils.IsAlphabetic(ch = Convert.ToChar(Str.Peek()))) {
+								ch = Convert.ToChar(Str.Read());
+								name.Append(ch);
+							} else 
+							{
+								break;
+							}
+						}
+						
+						Debug.WriteLine("variable nombre = "+ name.ToString());
+						Token t= new Token('L', name.ToString());
+						return t;
+				
+					}
+					throw new Exception("exception bad get Token");
+			//break;					
 			}
 		}
 		/// <summary>
@@ -189,7 +255,24 @@ namespace Parser
 		/// </summary>
 		/// <param name="ch"></param>
 		public void Ignore(char ch)
-		{		
+		{
+			if (full && ch == buffer.Kind) {
+				full = false;
+				return;
+			}
+			full = false;
+			char c;
+			while (!Str.EndOfStream) {
+				c = Convert.ToChar(Str.Peek());
+				if (c == ch){
+					Str.Read();
+					return;
+				}
+			}
+			
+		}
+		public void Ignore(){
+			Str.Read();
 		}
 		/// <summary>
 		/// is there a Token in the buffer?
@@ -202,14 +285,59 @@ namespace Parser
 	}
 	
 	public class Variable
-	{
+	{		
 		public string name{ get; set; }
 		public double value{ get; set; }
-		Variable(string n, double v)
+		public Variable(string n, double v)
 		{
 			name = n;
 			value = v;
 		}
+	}
+	/// <summary>
+	/// clase Array de variables
+	/// </summary>
+	public class ArrayVariables
+	{
+		List<Variable> variable_tabla;
+		
+		public ArrayVariables()
+		{
+			variable_tabla = new List<Variable>();
+		}
+		public double getValue(string n)
+		{
+			foreach (var element in variable_tabla) {
+				if (element.name.Equals(n))
+					return element.value;
+			}
+			throw new Exception("variable no definida .. n ");
+		}
+		public void setValue(string n, double value)
+		{
+			foreach (var element in variable_tabla) {
+				if (element.name.Equals(n)) {	
+					element.value = value;
+					return;
+				}
+			}
+			throw new Exception("variable no definida .. n - vlue ");
+		}
+		
+		public bool isdeclared(string n)
+		{
+			foreach (var element in variable_tabla) {
+				if (element.name.Equals(n)) {				
+					return true;
+				}
+			}
+			return false;
+		}
+		public void add(Variable var)
+		{
+			variable_tabla.Add(var);
+		}
+		
 	}
 	
 	public class Expression
@@ -224,10 +352,8 @@ namespace Parser
 		{
 			double left = Term();
 			Token t = ts.get();
-			while (true) 
-			{
-				switch (t.Kind) 
-				{
+			while (true) {
+				switch (t.Kind) {
 					case '+':
 						left += Term();
 						t = ts.get();
@@ -248,10 +374,8 @@ namespace Parser
 		{
 			double left = Primary();
 			Token t = ts.get();
-			while (true)
-			{
-				switch (t.Kind) 
-				{
+			while (true) {
+				switch (t.Kind) {
 					case '*':
 						left *= Primary();
 						t = ts.get();
@@ -261,6 +385,13 @@ namespace Parser
 						if (d == 0)
 							throw new Exception("Divicion por cero..");
 						left /= d;
+						t = ts.get();
+						break;
+					case '%':
+						d = Primary();
+						if (d == 0)
+							throw new Exception("Divicion por cero ...");
+						left %= d;
 						t = ts.get();
 						break;
 					default:
@@ -273,8 +404,7 @@ namespace Parser
 		double Primary()
 		{
 			Token t = ts.get();
-			switch (t.Kind) 
-			{
+			switch (t.Kind) {
 				case '(': //maneja una (expresion)
 					{
 						double d = EvaluaExpression();
@@ -285,10 +415,77 @@ namespace Parser
 					}
 				case '8':
 					return t.Val;
+				case 'L':
+					//TOTO: depurar para obtener el valor de la varibla
+					return variable_lista.getValue(t.Name);
+					//return t.Val;
+				case '-':
+					return -Primary();
+				case '+':
+					return Primary();
 				default:
 					throw new Exception("Primary exception...");
 			}
 		}
+		
+		TextWriter cout = Console.Out;
+		readonly TextReader cin = Console.In;
+		/// <summary>
+		/// calcular la expresion
+		/// </summary>
+		public void Calculate()
+		{
+			while (!ts.EndOfStream)
+			{
+				try
+				{
+					cout.Write('>');
+					Token t = ts.get();
+					while (t.Kind == ';')
+						ts.get(); 
+					if(t.Kind=='q') return;
+					ts.putback(t);
+					cout.Write("= " + Statement() + "\n");
+					
+				}catch(Exception ex)
+				{
+					Debug.WriteLine(ex.ToString());
+				}
+			}		
+		}
+		//
+		double Statement()
+		{
+			Token T = ts.get();
+			switch (T.Kind)
+			{
+				case 'L':
+					ts.putback(T);
+					return Declaration();
+				default:
+					ts.putback(T);
+					return EvaluaExpression();
+			}
+		}
+		//
+		ArrayVariables variable_lista = new ArrayVariables();
+		//	
+		double Declaration()
+		{
+			Token t = ts.get();
+			if (t.Kind != 'L')
+				throw new Exception("Name variable not establecida ");
+			string name_variable = t.Name;
+			Token t2 = ts.get();
+			if (t2.Kind != '=')
+				throw new Exception(" = se ha perdido en la declaracion de la variable" + t.Name);
+			double d = EvaluaExpression();
+			Variable variable = new Variable(t.Name, d);
+			variable_lista.add(variable);
+			t.Val = d;
+			return d;
+		}
+		//
 	}
 	
 }

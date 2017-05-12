@@ -180,9 +180,10 @@ namespace Parser
 				try 
 				{
 					Expression expr = new Expression(new TokenStream(cad.Trim()));
-					double d = expr.EvaluaExpression();
-					Console.WriteLine(d);
-				} catch (Exception ex) {
+					expr.Calculate();
+				} 
+				catch (Exception ex)
+				{
 					Console.WriteLine(ex.Message);
 				}	
 				//do calc;
