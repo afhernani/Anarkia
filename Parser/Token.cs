@@ -118,7 +118,7 @@ namespace Parser
 	/// </summary>
 	public class TokenStream
 	{
-		private static StreamReader Str{ get; set; }
+		StreamReader Str{ get; set; }
 		public TokenStream(string cad)
 			: this()
 		{
@@ -213,25 +213,22 @@ namespace Parser
 					}
 			//break;
 				default:
-					if (TextUtils.IsAlphabetic(ch)) 
-					{
+					if (TextUtils.IsAlphabetic(ch)) {
 						StringBuilder name = new StringBuilder();
 						
 						name.Append(ch);
 						
-						while (!Str.EndOfStream) 
-						{
+						while (!Str.EndOfStream) {
 							if (TextUtils.IsAlphabetic(ch = Convert.ToChar(Str.Peek()))) {
 								ch = Convert.ToChar(Str.Read());
 								name.Append(ch);
-							} else 
-							{
+							} else {
 								break;
 							}
 						}
 						
-						Debug.WriteLine("variable nombre = "+ name.ToString());
-						Token t= new Token('L', name.ToString());
+						Debug.WriteLine("variable nombre = " + name.ToString());
+						Token t = new Token('L', name.ToString());
 						return t;
 				
 					}
@@ -264,14 +261,15 @@ namespace Parser
 			char c;
 			while (!Str.EndOfStream) {
 				c = Convert.ToChar(Str.Peek());
-				if (c == ch){
+				if (c == ch) {
 					Str.Read();
 					return;
 				}
 			}
 			
 		}
-		public void Ignore(){
+		public void Ignore()
+		{
 			Str.Read();
 		}
 		/// <summary>
@@ -285,7 +283,7 @@ namespace Parser
 	}
 	
 	public class Variable
-	{		
+	{
 		public string name{ get; set; }
 		public double value{ get; set; }
 		public Variable(string n, double v)
@@ -344,7 +342,14 @@ namespace Parser
 	{
 		TokenStream ts;
 		
+		public Expression()
+		{
+		}
 		public Expression(TokenStream ts)
+		{
+			this.ts = ts;
+		}
+		public void AddTokenStream(TokenStream ts)
 		{
 			this.ts = ts;
 		}
@@ -418,7 +423,7 @@ namespace Parser
 				case 'L':
 					//TOTO: depurar para obtener el valor de la varibla
 					return variable_lista.getValue(t.Name);
-					//return t.Val;
+			//return t.Val;
 				case '-':
 					return -Primary();
 				case '+':
@@ -435,20 +440,18 @@ namespace Parser
 		/// </summary>
 		public void Calculate()
 		{
-			while (!ts.EndOfStream)
-			{
-				try
-				{
+			while (!ts.EndOfStream) {
+				try {
 					cout.Write('>');
 					Token t = ts.get();
 					while (t.Kind == ';')
 						ts.get(); 
-					if(t.Kind=='q') return;
+					if (t.Kind == 'q')
+						return;
 					ts.putback(t);
 					cout.Write("= " + Statement() + "\n");
 					
-				}catch(Exception ex)
-				{
+				} catch (Exception ex) {
 					Debug.WriteLine(ex.ToString());
 				}
 			}		
@@ -457,8 +460,7 @@ namespace Parser
 		double Statement()
 		{
 			Token T = ts.get();
-			switch (T.Kind)
-			{
+			switch (T.Kind) {
 				case 'L':
 					ts.putback(T);
 					return Declaration();
@@ -469,7 +471,7 @@ namespace Parser
 		}
 		//
 		ArrayVariables variable_lista = new ArrayVariables();
-		//	
+		//
 		double Declaration()
 		{
 			Token t = ts.get();
@@ -478,7 +480,7 @@ namespace Parser
 			string name_variable = t.Name;
 			Token t2 = ts.get();
 			if (t2.Kind != '=')
-				throw new Exception(" = se ha perdido en la declaracion de la variable" + t.Name);
+				throw new Exception(" = se ha perdido en la declaracion de la variable " + t.Name);
 			double d = EvaluaExpression();
 			Variable variable = new Variable(t.Name, d);
 			variable_lista.add(variable);
