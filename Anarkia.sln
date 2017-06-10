@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSCompiler", "CSCompiler\CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsoInterfaz", "UsoInterfaz\UsoInterfaz.csproj", "{F6376048-6895-4925-A4B4-934EB3B5D89D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfazFrm", "InterfazFrm\InterfazFrm.csproj", "{94C673D4-77AA-45AC-90EA-14668E9B0625}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -160,5 +162,9 @@ Global
 		{F6376048-6895-4925-A4B4-934EB3B5D89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6376048-6895-4925-A4B4-934EB3B5D89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6376048-6895-4925-A4B4-934EB3B5D89D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
