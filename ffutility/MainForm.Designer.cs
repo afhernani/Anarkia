@@ -22,6 +22,7 @@ namespace ffutility
 		private System.Windows.Forms.Button btnConvert;
 		private System.Windows.Forms.Button btnmakeGif;
 		private System.Windows.Forms.Button btnImagen;
+		private System.Windows.Forms.TreeView treeView;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +53,7 @@ namespace ffutility
 			this.btnConvert = new System.Windows.Forms.Button();
 			this.btnmakeGif = new System.Windows.Forms.Button();
 			this.btnImagen = new System.Windows.Forms.Button();
+			this.treeView = new System.Windows.Forms.TreeView();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericValor)).BeginInit();
 			this.SuspendLayout();
@@ -69,9 +71,9 @@ namespace ffutility
 			// 
 			// pictureBox
 			// 
-			this.pictureBox.Location = new System.Drawing.Point(12, 35);
+			this.pictureBox.Location = new System.Drawing.Point(159, 35);
 			this.pictureBox.Name = "pictureBox";
-			this.pictureBox.Size = new System.Drawing.Size(380, 234);
+			this.pictureBox.Size = new System.Drawing.Size(233, 234);
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox.TabIndex = 1;
 			this.pictureBox.TabStop = false;
@@ -151,11 +153,19 @@ namespace ffutility
 			this.btnImagen.UseVisualStyleBackColor = true;
 			this.btnImagen.Click += new System.EventHandler(this.BtnImagenClick);
 			// 
+			// treeView
+			// 
+			this.treeView.Location = new System.Drawing.Point(14, 35);
+			this.treeView.Name = "treeView";
+			this.treeView.Size = new System.Drawing.Size(139, 233);
+			this.treeView.TabIndex = 8;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(670, 281);
+			this.Controls.Add(this.treeView);
 			this.Controls.Add(this.btnImagen);
 			this.Controls.Add(this.btnmakeGif);
 			this.Controls.Add(this.btnConvert);

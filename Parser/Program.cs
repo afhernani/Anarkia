@@ -79,7 +79,7 @@ namespace Parser
 		/// Convertir un string en un stream para leer
 		/// </summary>
 		/// <param name="contents"></param>
-		static StreamReader ConvertStingToStream(string contents)
+		static StreamReader ConvertStringToStream(string contents)
 		{
 			// convert string to stream
 			byte[] byteArray = Encoding.UTF8.GetBytes(contents);
@@ -129,7 +129,7 @@ namespace Parser
 		static void UseStream()
 		{
 			const string cad = "21.8+3-5";
-			using (StreamReader str = ConvertStingToStream(cad)) {
+			using (StreamReader str = ConvertStringToStream(cad)) {
 				while (!str.EndOfStream) {
 					char ch = Convert.ToChar(str.Read());
 					Console.WriteLine(ch);
@@ -191,5 +191,7 @@ namespace Parser
 					userWantsToExit = true;
 			}
 		}
+		//
+		
 	}
 }
