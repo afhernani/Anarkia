@@ -56,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsoInterfaz", "UsoInterfaz\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfazFrm", "InterfazFrm\InterfazFrm.csproj", "{94C673D4-77AA-45AC-90EA-14668E9B0625}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "del-with-extern-method", "del-with-extern-method\del-with-extern-method.csproj", "{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,5 +168,9 @@ Global
 		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94C673D4-77AA-45AC-90EA-14668E9B0625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

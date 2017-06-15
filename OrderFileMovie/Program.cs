@@ -8,6 +8,7 @@
  */
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace OrderFileMovie
 {
@@ -32,6 +33,11 @@ namespace OrderFileMovie
 			
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
+			{
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new ManagerBlocksForm());
+			}
 		}
 		public static void SeryMasterBlock()
 		{

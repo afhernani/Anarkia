@@ -67,6 +67,9 @@ namespace OrderFileMovie
 			ExistThumb=ExistVideo=Asociate=false;
 			Inicializa();
 		}
+		/// <summary>
+		/// Constructor vacio for serialization.
+		/// </summary>
 		public Block()
 		{
 			;
