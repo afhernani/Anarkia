@@ -58,6 +58,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfazFrm", "InterfazFrm\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "del-with-extern-method", "del-with-extern-method\del-with-extern-method.csproj", "{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampExtension", "ExampExtension\ExampExtension.csproj", "{E7A7BD7B-3DDB-4D0C-ACAB-F4A82F957ADD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampExtend", "ExampExtend\ExampExtend.csproj", "{5CD6A134-4A22-435F-A8A5-EF914412F79E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -172,5 +176,13 @@ Global
 		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592B05B0-EC89-472B-B2C0-AD2ECE6766DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A7BD7B-3DDB-4D0C-ACAB-F4A82F957ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A7BD7B-3DDB-4D0C-ACAB-F4A82F957ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A7BD7B-3DDB-4D0C-ACAB-F4A82F957ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A7BD7B-3DDB-4D0C-ACAB-F4A82F957ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD6A134-4A22-435F-A8A5-EF914412F79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD6A134-4A22-435F-A8A5-EF914412F79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD6A134-4A22-435F-A8A5-EF914412F79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD6A134-4A22-435F-A8A5-EF914412F79E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
