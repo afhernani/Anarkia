@@ -63,7 +63,7 @@ namespace OrderFileMovie
 			NameVideo = nameVideo;
 			string path = Path.GetDirectoryName(NameVideo);
 			string name = Path.GetFileName(NameVideo);
-			NameThumb = path + @"\Thumbails\"+ name+"_Thumbails.gif";
+			NameThumb = path + @"\Thumbails\"+ name+"_Thumbs_0000.gif";
 			ExistThumb=ExistVideo=Asociate=false;
 			Inicializa();
 		}
@@ -115,11 +115,11 @@ namespace OrderFileMovie
 		public void Copy(String ToPath)
 		{
 		    //TODO: copiar ficheros a la dirección indicada.
-		    if(Asociate)
+		    if(this.Asociate)
 		    {
 		    	//destino ficheros
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
-				string toFileThumb = Path.Combine(ToPath, Path.GetFileName(NameThumb));
+				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//copiar cada uno
 				FileLibrary.CopyFile(NameVideo, toFileVideo, true);
 				FileLibrary.CopyFile(NameThumb, toFileThumb, true);

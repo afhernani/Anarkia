@@ -36,7 +36,9 @@ namespace OrderFileMovie
 			{
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);
-				Application.Run(new ManagerBlocksForm());
+				ManagerBlocksForm manager = new ManagerBlocksForm();
+				manager.FullName = Environment.CurrentDirectory;
+				Application.Run(manager);
 			}
 		}
 		public static void SeryMasterBlock()
