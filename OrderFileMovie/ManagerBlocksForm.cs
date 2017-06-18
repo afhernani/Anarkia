@@ -107,6 +107,9 @@ namespace OrderFileMovie
 			FolderBrowserDialog dialog = new FolderBrowserDialog() {
 				
 			};
+			if(!String.IsNullOrEmpty(FullName)){
+				dialog.SelectedPath = Path.GetDirectoryName(FullName);
+			}
 			if (dialog.ShowDialog()==DialogResult.OK) {
 				NewPath =textBoxRename.Text = dialog.SelectedPath;
 			}
@@ -131,8 +134,14 @@ namespace OrderFileMovie
 		}
 		void BtnActionClick(object sender, EventArgs e)
 		{
+			if (String.IsNullOrEmpty(NewPath))
+				return;
 			if (radioButtonM.Checked){
 				Console.WriteLine("Move ..");
+				Block block = new Block(FullName);
+				if(block.Asociate){
+					block.Move(NewPath);
+				}
 			}
 			if (radioButtonC.Checked){
 				Console.WriteLine("Copy ..");
@@ -143,6 +152,10 @@ namespace OrderFileMovie
 			}
 			if (radioButtonR.Checked){
 				Console.WriteLine("Rename ..");
+				Block block = new Block(FullName);
+				if(block.Asociate){
+					block.Rename(NewPath);
+				}
 			}
 			
 		}

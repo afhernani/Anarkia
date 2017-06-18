@@ -98,7 +98,7 @@ namespace OrderFileMovie
 			{
 				//destino ficheros
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
-				string toFileThumb = Path.Combine(ToPath, Path.GetFileName(NameThumb));
+				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//mover cada uno.
 				FileLibrary.MoveFile(NameVideo, toFileVideo, true);
 				FileLibrary.MoveFile(NameThumb, toFileThumb, true);
@@ -136,10 +136,10 @@ namespace OrderFileMovie
 		    {
 				//destino ficheros
 				FileLibrary.RenameFile(NameVideo, NewFileName);
-				FileLibrary.RenameFile(NameThumb, NewFileName + "_Thumbs_0000.gig");
+				FileLibrary.RenameFile(NameThumb, NewFileName + "_Thumbs_0000.gif");
 				//no hace nada mas.
 				NameVideo = Path.Combine(Path.GetDirectoryName(NameVideo),NewFileName);
-				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_Thumbs_0000.gig");
+				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_Thumbs_0000.gif");
 				Inicializa();
 		    }
 			//TODO: renombrar los ficheros

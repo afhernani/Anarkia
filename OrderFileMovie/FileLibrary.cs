@@ -42,7 +42,8 @@ namespace FileLib
 
         public static void RenameFile(string oldfile, string NewName)
         {
-        	if (!System.IO.File.Exists(oldfile))
+			string newnamefile = Path.Combine(Path.GetDirectoryName(oldfile), NewName);
+        	if (!System.IO.File.Exists(newnamefile))
             {
 				FileInfo file = new FileInfo(oldfile);
 				file.CopyTo(Path.Combine(Path.GetDirectoryName(oldfile), NewName));
