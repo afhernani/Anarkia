@@ -54,7 +54,7 @@ namespace ImageFrame
 			this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnOpen.BackColor = System.Drawing.Color.Orange;
 			this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnOpen.Location = new System.Drawing.Point(295, 12);
+			this.btnOpen.Location = new System.Drawing.Point(293, 12);
 			this.btnOpen.Name = "btnOpen";
 			this.btnOpen.Size = new System.Drawing.Size(82, 29);
 			this.btnOpen.TabIndex = 1;
@@ -67,7 +67,7 @@ namespace ImageFrame
 			this.btnInabilita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnInabilita.BackColor = System.Drawing.Color.Orange;
 			this.btnInabilita.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnInabilita.Location = new System.Drawing.Point(295, 47);
+			this.btnInabilita.Location = new System.Drawing.Point(293, 47);
 			this.btnInabilita.Name = "btnInabilita";
 			this.btnInabilita.Size = new System.Drawing.Size(82, 29);
 			this.btnInabilita.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace ImageFrame
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.pictureBox.Location = new System.Drawing.Point(12, 8);
 			this.pictureBox.Name = "pictureBox";
-			this.pictureBox.Size = new System.Drawing.Size(277, 236);
+			this.pictureBox.Size = new System.Drawing.Size(275, 240);
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox.TabIndex = 3;
 			this.pictureBox.TabStop = false;
@@ -93,7 +93,7 @@ namespace ImageFrame
 			this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNext.BackColor = System.Drawing.Color.Orange;
 			this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnNext.Location = new System.Drawing.Point(295, 82);
+			this.btnNext.Location = new System.Drawing.Point(293, 82);
 			this.btnNext.Name = "btnNext";
 			this.btnNext.Size = new System.Drawing.Size(82, 29);
 			this.btnNext.TabIndex = 4;
@@ -114,7 +114,7 @@ namespace ImageFrame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(389, 256);
+			this.ClientSize = new System.Drawing.Size(387, 260);
 			this.Controls.Add(this.label);
 			this.Controls.Add(this.btnNext);
 			this.Controls.Add(this.pictureBox);

@@ -26,7 +26,7 @@ namespace ImageFrame
 		//private Image Frame{ get; set; }
 		private FrameDimension Dimension{ get; set; }
 		private int Count{ get; set; }
-		private int CurrentFrame{ get; set; }
+		public int CurrentFrame{ get; set; }
 		private bool Reverse{ get; set; }
 		private int Step{ get; set; }
 		
