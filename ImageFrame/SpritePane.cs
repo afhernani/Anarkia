@@ -54,17 +54,15 @@ namespace ImageFrame
 			Accion = false;
 			InitialImage(0);
 		}
-		
+		public PictureBoxSizeMode SizeMode{ get; set; }
 		private Thread t;
 		private ImageGif _imagegif = null;
 		private int _index = 0;
-		public Image GetImage 
-		{
+		public Image GetImage {
 			get{ return (Image)_imagegif.GetFrame(_index).Clone(); }
 		}
 		
-		public ImageGif SetImageGif
-		{ 
+		public ImageGif SetImageGif { 
 			set { 
 				_imagegif = value;
 				InitialImage(0);
@@ -81,9 +79,18 @@ namespace ImageFrame
 					g.SmoothingMode = SmoothingMode.AntiAlias;
 					g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 					g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-					g.DrawImage(_imagegif.GetNextFrame(), 0, 0,
-						new RectangleF(0, 0,
-							this.Width, this.Height), GraphicsUnit.Pixel);
+					switch (SizeMode) {
+						case PictureBoxSizeMode.Normal:
+							g.DrawImage(_imagegif.GetNextFrame(), 0, 0,
+								new RectangleF(0, 0, this.Width, this.Height), 
+								GraphicsUnit.Pixel);
+							break;
+						case PictureBoxSizeMode.Zoom:
+							g.DrawImage(LibUtility.Utility.ResizeImage(_imagegif.GetNextFrame(),this.Width,this.Height,true), 0, 0, 
+								new RectangleF(0, 0, this.Width, this.Height), 
+								GraphicsUnit.Pixel);				
+							break;	
+					}
 				}
 				Debug.WriteLine("dibujando image ...{" + _imagegif.CurrentFrame + "}");
 				Thread.Sleep(Time);
@@ -102,9 +109,18 @@ namespace ImageFrame
 				g.SmoothingMode = SmoothingMode.AntiAlias;
 				g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-				g.DrawImage(_imagegif.GetFrame(index), 0, 0,
-					new RectangleF(0, 0,
-						this.Width, this.Height), GraphicsUnit.Pixel);
+				switch (SizeMode) {
+					case PictureBoxSizeMode.Normal:
+						g.DrawImage(_imagegif.GetFrame(index), 0, 0, 
+							new RectangleF(0, 0, this.Width, this.Height), 
+							GraphicsUnit.Pixel);
+						break;
+					case PictureBoxSizeMode.Zoom:
+						g.DrawImage(LibUtility.Utility.ResizeImage(_imagegif.GetFrame(index), this.Width, this.Height, true), 0, 0, 
+							new RectangleF(0, 0, this.Width, this.Height), 
+							GraphicsUnit.Pixel);				
+						break;	
+				}
 			}
 			Debug.WriteLine("dibujando imagen de inicio ...{" + _imagegif.CurrentFrame + "}");
 		}

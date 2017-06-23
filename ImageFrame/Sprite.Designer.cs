@@ -46,6 +46,7 @@ namespace ImageFrame
 			this.spritePane1.Location = new System.Drawing.Point(9, 12);
 			this.spritePane1.Name = "spritePane1";
 			this.spritePane1.Size = new System.Drawing.Size(252, 150);
+			this.spritePane1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.spritePane1.TabIndex = 0;
 			this.spritePane1.Time = 800;
 			this.spritePane1.Click += new System.EventHandler(this.SpritePane1Click);

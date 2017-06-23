@@ -49,6 +49,7 @@ namespace ImageFrame
 					//imagegif = new ImageGif(filename);
 					spritePane1.SetImageGif = new ImageGif(filename);
 					//label.Text = imagegif.Count.ToString();
+					spritePane1.SizeMode = PictureBoxSizeMode.Zoom;
 				}
 			}
 		}
