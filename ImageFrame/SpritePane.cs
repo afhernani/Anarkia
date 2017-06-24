@@ -7,6 +7,7 @@
  * 
  */
 using System;
+using System.IO;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -48,18 +49,30 @@ namespace ImageFrame
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-			_imagegif = new ImageGif(path);
+			if(Path.GetExtension(path).ToUpper()==".gif".ToUpper()){
+				_imagegif = new ImageGif(path);
+			}
 			_index = 0;
 			Time = 800;
 			Accion = false;
 			InitialImage(0);
 		}
+		
 		public PictureBoxSizeMode SizeMode{ get; set; }
 		private Thread t;
 		private ImageGif _imagegif = null;
 		private int _index = 0;
+		
 		public Image GetImage {
-			get{ return (Image)_imagegif.GetFrame(_index).Clone(); }
+			get{ 
+				if(_imagegif != null){
+					
+					return (Image)_imagegif.GetFrame(_index).Clone();
+				} else
+				{
+					return new Bitmap(this.Width, this.Height);
+				}
+			}
 		}
 		
 		public ImageGif SetImageGif { 
@@ -76,6 +89,7 @@ namespace ImageFrame
 				Image newImage = new Bitmap(this.Width, this.Height, PixelFormat.Format64bppPArgb);
                 
 				using (Graphics g = this.CreateGraphics()) {
+					//g.Clear(this.BackColor); //produce pantallazo.
 					g.SmoothingMode = SmoothingMode.AntiAlias;
 					g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 					g.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -106,6 +120,7 @@ namespace ImageFrame
 			Image newImage = new Bitmap(this.Width, this.Height, PixelFormat.Format64bppPArgb);
                 
 			using (Graphics g = this.CreateGraphics()) {
+				g.Clear(this.BackColor); //aqui no.
 				g.SmoothingMode = SmoothingMode.AntiAlias;
 				g.InterpolationMode = InterpolationMode.HighQualityBicubic;
 				g.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -137,6 +152,7 @@ namespace ImageFrame
 			System.Action action = ActionImagen;
 			t = new Thread(ActionImagen);
 			t.Start();
+			Debug.WriteLine("SpritePane.MouseHove()...");
 		}
 		void SpritePaneMouseEnter(object sender, EventArgs e)
 		{
@@ -150,5 +166,6 @@ namespace ImageFrame
 			if (t != null)
 				t.Abort();
 		}
+		
 	}
 }

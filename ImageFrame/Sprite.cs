@@ -10,6 +10,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ImageFrame
 {
@@ -52,6 +53,10 @@ namespace ImageFrame
 					spritePane1.SizeMode = PictureBoxSizeMode.Zoom;
 				}
 			}
+		}
+		void SpritePane1MouseHover(object sender, EventArgs e)
+		{
+			Debug.WriteLine("SpritePane1.MouseHover()....");
 		}
 	}
 }

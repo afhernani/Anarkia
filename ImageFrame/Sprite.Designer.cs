@@ -50,6 +50,7 @@ namespace ImageFrame
 			this.spritePane1.TabIndex = 0;
 			this.spritePane1.Time = 800;
 			this.spritePane1.Click += new System.EventHandler(this.SpritePane1Click);
+			this.spritePane1.MouseHover += new System.EventHandler(this.SpritePane1MouseHover);
 			// 
 			// Sprite
 			// 
