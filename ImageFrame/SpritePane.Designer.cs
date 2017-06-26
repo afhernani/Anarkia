@@ -44,7 +44,7 @@ namespace ImageFrame
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.DoubleBuffered = true;
 			this.Name = "SpritePane";
-			this.Size = new System.Drawing.Size(230, 140);
+			this.Size = new System.Drawing.Size(238, 140);
 			this.MouseEnter += new System.EventHandler(this.SpritePaneMouseEnter);
 			this.MouseLeave += new System.EventHandler(this.SpritePaneMouseLeave);
 			this.MouseHover += new System.EventHandler(this.SpritePaneMouseHover);

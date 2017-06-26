@@ -34,7 +34,7 @@ namespace ImageFrame
 		{
 			CurrentFrame = -1;
 			Step = 1;
-			Reverse = false;
+			Reverse = false; 
 			frames = EnumerateFrames(path);
 			/*GifImage = Image.FromFile(path);
 			Dimension = new FrameDimension(GifImage.FrameDimensionsList[0]);
@@ -90,6 +90,7 @@ namespace ImageFrame
 		/// lista de imagenes en bytes.
 		/// </summary>
 		List<byte[]> frames = new List<byte[]>() { };
+		
 		/// <summary>
 		/// Extrae las imagenes del fichero gif en una lista de bytes
 		/// </summary>

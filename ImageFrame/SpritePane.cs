@@ -25,6 +25,7 @@ namespace ImageFrame
 	[Serializable, XmlRoot("SpritePane", Namespace = "", IsNullable = false)]
 	public partial class SpritePane : UserControl
 	{
+		
 		public SpritePane()
 		{
 			//
@@ -39,6 +40,7 @@ namespace ImageFrame
 			Time = 800;
 			Accion = false;
 		}
+		
 		public SpritePane(string path)
 		{
 			//
@@ -59,6 +61,7 @@ namespace ImageFrame
 		}
 		
 		public PictureBoxSizeMode SizeMode{ get; set; }
+		
 		private Thread t;
 		private ImageGif _imagegif = null;
 		private int _index = 0;
