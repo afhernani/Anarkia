@@ -34,11 +34,12 @@ namespace monoDb
 			MongoDatabase db = mongo.GetDatabase("test");
 			//vamos añadir clientes a esta table.
 			//creamos el objeto a añadir. - nombres -
-			//Cliente cliente = new Cliente("Ana", "Sosa Aleman");
+			Cliente cliente = new Cliente("Ana Teresa", "Aleman Ferraz");
+			
 			
 			MongoCollection colectionCliente = db.GetCollection("Clientes");
 			//insertamos el cliente en la colección -tabla-
-			//colectionCliente.Insert(cliente);
+			colectionCliente.Insert(cliente);
 			
 			//consulta a la base de datos con metodo query ****
 			IMongoQuery filtro = Query<Cliente>.EQ(clt => clt.nombre, "Hernani");
