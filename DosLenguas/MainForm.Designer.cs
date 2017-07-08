@@ -15,13 +15,15 @@ namespace DosLenguas
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.Button btStart;
-		private System.Windows.Forms.TextBox textIngles;
+		private System.Windows.Forms.TextBox textIng;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textEsp;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btnIngles;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox richTextBox;
+		private System.Windows.Forms.RadioButton rdIng;
+		private System.Windows.Forms.RadioButton rdEsp;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -45,31 +47,37 @@ namespace DosLenguas
 		private void InitializeComponent()
 		{
 			this.btStart = new System.Windows.Forms.Button();
-			this.textIngles = new System.Windows.Forms.TextBox();
+			this.textIng = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textEsp = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.btnIngles = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+			this.richTextBox = new System.Windows.Forms.RichTextBox();
+			this.rdIng = new System.Windows.Forms.RadioButton();
+			this.rdEsp = new System.Windows.Forms.RadioButton();
 			this.SuspendLayout();
 			// 
 			// btStart
 			// 
 			this.btStart.BackColor = System.Drawing.Color.Red;
+			this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btStart.Location = new System.Drawing.Point(361, 237);
 			this.btStart.Name = "btStart";
 			this.btStart.Size = new System.Drawing.Size(66, 30);
 			this.btStart.TabIndex = 0;
 			this.btStart.Text = "Conectar";
 			this.btStart.UseVisualStyleBackColor = false;
+			this.btStart.Click += new System.EventHandler(this.BtStartClick);
 			// 
-			// textIngles
+			// textIng
 			// 
-			this.textIngles.Location = new System.Drawing.Point(12, 35);
-			this.textIngles.Name = "textIngles";
-			this.textIngles.Size = new System.Drawing.Size(366, 20);
-			this.textIngles.TabIndex = 1;
+			this.textIng.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textIng.Location = new System.Drawing.Point(12, 35);
+			this.textIng.Name = "textIng";
+			this.textIng.Size = new System.Drawing.Size(366, 24);
+			this.textIng.TabIndex = 1;
+			this.textIng.TextChanged += new System.EventHandler(this.TextIngTextChanged);
 			// 
 			// label1
 			// 
@@ -80,12 +88,15 @@ namespace DosLenguas
 			this.label1.TabIndex = 2;
 			this.label1.Text = "Ingles";
 			// 
-			// textBox1
+			// textEsp
 			// 
-			this.textBox1.Location = new System.Drawing.Point(12, 85);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(366, 20);
-			this.textBox1.TabIndex = 3;
+			this.textEsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textEsp.Location = new System.Drawing.Point(12, 85);
+			this.textEsp.Name = "textEsp";
+			this.textEsp.ReadOnly = true;
+			this.textEsp.Size = new System.Drawing.Size(366, 24);
+			this.textEsp.TabIndex = 3;
+			this.textEsp.TextChanged += new System.EventHandler(this.TextEspTextChanged);
 			// 
 			// label2
 			// 
@@ -98,42 +109,70 @@ namespace DosLenguas
 			// 
 			// btnIngles
 			// 
+			this.btnIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnIngles.Location = new System.Drawing.Point(384, 35);
 			this.btnIngles.Name = "btnIngles";
-			this.btnIngles.Size = new System.Drawing.Size(38, 20);
+			this.btnIngles.Size = new System.Drawing.Size(38, 24);
 			this.btnIngles.TabIndex = 5;
 			this.btnIngles.Text = "...";
 			this.btnIngles.UseVisualStyleBackColor = true;
+			this.btnIngles.Click += new System.EventHandler(this.BtnInglesClick);
 			// 
 			// button1
 			// 
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.Location = new System.Drawing.Point(384, 84);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(38, 20);
+			this.button1.Size = new System.Drawing.Size(38, 25);
 			this.button1.TabIndex = 6;
 			this.button1.Text = "...";
 			this.button1.UseVisualStyleBackColor = true;
 			// 
-			// richTextBox1
+			// richTextBox
 			// 
-			this.richTextBox1.Location = new System.Drawing.Point(12, 118);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(343, 149);
-			this.richTextBox1.TabIndex = 7;
-			this.richTextBox1.Text = "";
+			this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.richTextBox.Location = new System.Drawing.Point(12, 118);
+			this.richTextBox.Name = "richTextBox";
+			this.richTextBox.Size = new System.Drawing.Size(343, 149);
+			this.richTextBox.TabIndex = 7;
+			this.richTextBox.Text = "";
+			// 
+			// rdIng
+			// 
+			this.rdIng.Checked = true;
+			this.rdIng.Location = new System.Drawing.Point(382, 136);
+			this.rdIng.Name = "rdIng";
+			this.rdIng.Size = new System.Drawing.Size(45, 32);
+			this.rdIng.TabIndex = 8;
+			this.rdIng.TabStop = true;
+			this.rdIng.Text = "Ing";
+			this.rdIng.UseVisualStyleBackColor = true;
+			this.rdIng.CheckedChanged += new System.EventHandler(this.RdIngCheckedChanged);
+			// 
+			// rdEsp
+			// 
+			this.rdEsp.Location = new System.Drawing.Point(382, 165);
+			this.rdEsp.Name = "rdEsp";
+			this.rdEsp.Size = new System.Drawing.Size(45, 32);
+			this.rdEsp.TabIndex = 9;
+			this.rdEsp.Text = "Esp";
+			this.rdEsp.UseVisualStyleBackColor = true;
+			this.rdEsp.CheckedChanged += new System.EventHandler(this.RdEspCheckedChanged);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(439, 279);
-			this.Controls.Add(this.richTextBox1);
+			this.Controls.Add(this.rdEsp);
+			this.Controls.Add(this.rdIng);
+			this.Controls.Add(this.richTextBox);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnIngles);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.textEsp);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textIngles);
+			this.Controls.Add(this.textIng);
 			this.Controls.Add(this.btStart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "MainForm";
