@@ -141,17 +141,20 @@ namespace DosLenguas
 			engToEsp = true;
 			textEsp.ReadOnly = true;
 			textIng.ReadOnly = false;
+			btnIngles.Enabled = false;
 		}
 		void RdEspCheckedChanged(object sender, EventArgs e)
 		{
 			engToEsp = false;
 			textIng.ReadOnly = true;
 			textEsp.ReadOnly = false;
+			btnIngles.Enabled = false;
 		}
 		void RdAddCheckedChanged(object sender, EventArgs e)
 		{
 			textIng.ReadOnly = false;
 			textEsp.ReadOnly = false;
+			btnIngles.Enabled = true;
 		}
 		
 	}

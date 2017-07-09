@@ -111,6 +111,7 @@ namespace DosLenguas
 			// 
 			// btnIngles
 			// 
+			this.btnIngles.Enabled = false;
 			this.btnIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnIngles.Location = new System.Drawing.Point(384, 35);
 			this.btnIngles.Name = "btnIngles";
