@@ -70,6 +70,8 @@ namespace DosLenguas
 			if (colectionBocablos == null)
 				return;
 			richTextBox.Clear();
+			if (rdAdd.Checked)
+				return;
 			if (!String.IsNullOrEmpty(textEsp.Text)) {
 				colectionBocablos = db.GetCollection("bocablos");
 				var Palabras = colectionBocablos.AsQueryable<Word>();
@@ -99,6 +101,8 @@ namespace DosLenguas
 			if (colectionBocablos == null)
 				return;
 			richTextBox.Clear();
+			if (rdAdd.Checked)
+				return;
 			if (!String.IsNullOrEmpty(textIng.Text)) {
 				colectionBocablos = db.GetCollection("bocablos");
 				var Palabras = colectionBocablos.AsQueryable<Word>();
@@ -123,6 +127,8 @@ namespace DosLenguas
 		}
 		void BtnInglesClick(object sender, EventArgs e)
 		{
+			if (db == null)
+				return; //no esta inicializada la db mongo.
 			colectionBocablos = db.GetCollection("bocablos");
 			if (!String.IsNullOrEmpty(textIng.Text) && !String.IsNullOrEmpty(textEsp.Text)) 
 			{
@@ -140,6 +146,11 @@ namespace DosLenguas
 		{
 			engToEsp = false;
 			textIng.ReadOnly = true;
+			textEsp.ReadOnly = false;
+		}
+		void RdAddCheckedChanged(object sender, EventArgs e)
+		{
+			textIng.ReadOnly = false;
 			textEsp.ReadOnly = false;
 		}
 		

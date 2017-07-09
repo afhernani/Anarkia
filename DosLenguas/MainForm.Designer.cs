@@ -24,6 +24,7 @@ namespace DosLenguas
 		private System.Windows.Forms.RichTextBox richTextBox;
 		private System.Windows.Forms.RadioButton rdIng;
 		private System.Windows.Forms.RadioButton rdEsp;
+		private System.Windows.Forms.RadioButton rdAdd;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -56,6 +57,7 @@ namespace DosLenguas
 			this.richTextBox = new System.Windows.Forms.RichTextBox();
 			this.rdIng = new System.Windows.Forms.RadioButton();
 			this.rdEsp = new System.Windows.Forms.RadioButton();
+			this.rdAdd = new System.Windows.Forms.RadioButton();
 			this.SuspendLayout();
 			// 
 			// btStart
@@ -112,14 +114,15 @@ namespace DosLenguas
 			this.btnIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnIngles.Location = new System.Drawing.Point(384, 35);
 			this.btnIngles.Name = "btnIngles";
-			this.btnIngles.Size = new System.Drawing.Size(38, 24);
+			this.btnIngles.Size = new System.Drawing.Size(43, 24);
 			this.btnIngles.TabIndex = 5;
-			this.btnIngles.Text = "...";
+			this.btnIngles.Text = "Add";
 			this.btnIngles.UseVisualStyleBackColor = true;
 			this.btnIngles.Click += new System.EventHandler(this.BtnInglesClick);
 			// 
 			// button1
 			// 
+			this.button1.Enabled = false;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.Location = new System.Drawing.Point(384, 84);
 			this.button1.Name = "button1";
@@ -159,11 +162,22 @@ namespace DosLenguas
 			this.rdEsp.UseVisualStyleBackColor = true;
 			this.rdEsp.CheckedChanged += new System.EventHandler(this.RdEspCheckedChanged);
 			// 
+			// rdAdd
+			// 
+			this.rdAdd.Location = new System.Drawing.Point(382, 199);
+			this.rdAdd.Name = "rdAdd";
+			this.rdAdd.Size = new System.Drawing.Size(45, 32);
+			this.rdAdd.TabIndex = 10;
+			this.rdAdd.Text = "Add";
+			this.rdAdd.UseVisualStyleBackColor = true;
+			this.rdAdd.CheckedChanged += new System.EventHandler(this.RdAddCheckedChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(439, 279);
+			this.Controls.Add(this.rdAdd);
 			this.Controls.Add(this.rdEsp);
 			this.Controls.Add(this.rdIng);
 			this.Controls.Add(this.richTextBox);
