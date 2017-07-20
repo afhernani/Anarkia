@@ -22,7 +22,7 @@ namespace DosLenguas
 	/// <summary>
 	/// Description of MainForm.
 	/// </summary>
-	public partial class MainForm : Form
+	public partial class MainForm : Form, IForm
 	{
 		MongoClient mc;
 		static MongoServer mongo;
@@ -135,6 +135,8 @@ namespace DosLenguas
 				Word wd = new Word(textEsp.Text, textIng.Text);
 				colectionBocablos.Insert(wd);
 			}
+			textIng.Clear();
+			textEsp.Clear();
 		}
 		void RdIngCheckedChanged(object sender, EventArgs e)
 		{
@@ -142,6 +144,7 @@ namespace DosLenguas
 			textEsp.ReadOnly = true;
 			textIng.ReadOnly = false;
 			btnIngles.Enabled = false;
+			btnFormFile.Enabled = false;
 		}
 		void RdEspCheckedChanged(object sender, EventArgs e)
 		{
@@ -149,13 +152,35 @@ namespace DosLenguas
 			textIng.ReadOnly = true;
 			textEsp.ReadOnly = false;
 			btnIngles.Enabled = false;
+			btnFormFile.Enabled = false;
 		}
 		void RdAddCheckedChanged(object sender, EventArgs e)
 		{
 			textIng.ReadOnly = false;
 			textEsp.ReadOnly = false;
 			btnIngles.Enabled = true;
+			btnFormFile.Enabled = true;
+		}
+				
+		void BtnFormFileClick(object sender, EventArgs e)
+		{
+			FormFileAdd f = new FormFileAdd();
+			//esto es una de las claves.
+			//lanzarlo con el this como base.
+			//puede ser modal o unico con la misma condicion
+			//planteada aqui abajo.
+			f.Show(this); 
 		}
 		
+		#region IForm implementation
+		public void AddWordFromFile(Word nword)
+		{
+			//TODO: aqui recibimos la palabra, comprobamos que existe en
+			//el diccionario y si no existe la añadimos si no, no.
+			MessageBox.Show("Procesamos en el " +
+			                "formulario principal " +
+			                "la palabra " + nword.ToJson());
+		}
+		#endregion
 	}
 }

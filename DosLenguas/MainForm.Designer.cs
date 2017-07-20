@@ -20,7 +20,7 @@ namespace DosLenguas
 		private System.Windows.Forms.TextBox textEsp;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btnIngles;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnFormFile;
 		private System.Windows.Forms.RichTextBox richTextBox;
 		private System.Windows.Forms.RadioButton rdIng;
 		private System.Windows.Forms.RadioButton rdEsp;
@@ -53,7 +53,7 @@ namespace DosLenguas
 			this.textEsp = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.btnIngles = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnFormFile = new System.Windows.Forms.Button();
 			this.richTextBox = new System.Windows.Forms.RichTextBox();
 			this.rdIng = new System.Windows.Forms.RadioButton();
 			this.rdEsp = new System.Windows.Forms.RadioButton();
@@ -121,16 +121,17 @@ namespace DosLenguas
 			this.btnIngles.UseVisualStyleBackColor = true;
 			this.btnIngles.Click += new System.EventHandler(this.BtnInglesClick);
 			// 
-			// button1
+			// btnFormFile
 			// 
-			this.button1.Enabled = false;
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(384, 84);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(38, 25);
-			this.button1.TabIndex = 6;
-			this.button1.Text = "...";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnFormFile.Enabled = false;
+			this.btnFormFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnFormFile.Location = new System.Drawing.Point(384, 84);
+			this.btnFormFile.Name = "btnFormFile";
+			this.btnFormFile.Size = new System.Drawing.Size(38, 25);
+			this.btnFormFile.TabIndex = 6;
+			this.btnFormFile.Text = "File";
+			this.btnFormFile.UseVisualStyleBackColor = true;
+			this.btnFormFile.Click += new System.EventHandler(this.BtnFormFileClick);
 			// 
 			// richTextBox
 			// 
@@ -182,7 +183,7 @@ namespace DosLenguas
 			this.Controls.Add(this.rdEsp);
 			this.Controls.Add(this.rdIng);
 			this.Controls.Add(this.richTextBox);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnFormFile);
 			this.Controls.Add(this.btnIngles);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.textEsp);
