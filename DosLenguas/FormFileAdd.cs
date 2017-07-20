@@ -52,6 +52,7 @@ namespace DosLenguas
 					}
 					richTextBox.Clear();
 					richTextBox.Lines = lineas.ToArray();
+					lin = 0;
 				}
 			}
 		}
@@ -59,6 +60,13 @@ namespace DosLenguas
 		void BtnNextClick(object sender, EventArgs e){
 			if(richTextBox.Lines.Length>0){
 				string cadena = richTextBox.Lines[lin];
+				int pos =richTextBox.Find(cadena);
+				if(pos != -1){	
+					richTextBox.SelectionStart =pos;
+					richTextBox.SelectionLength = cadena.Length;
+					richTextBox.SelectionBackColor = System.Drawing.Color.Yellow;
+				}
+				
 				ProcesarCadena(cadena);
 				
 				lin++;
