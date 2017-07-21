@@ -185,6 +185,10 @@ namespace DosLenguas
 			if(db!=null){
 				if(!IsExist(nword)){
 					//No existe, adicionamos al diccionario
+					colectionBocablos = db.GetCollection("bocablos");
+					colectionBocablos.Insert(nword);
+					Debug.WriteLine("Adicionada al diccionario " +
+					                "la palabra " + nword.ToJson());
 				}
 			}
 			//comprobar si la palabra ya existe en el la base de datos
@@ -201,11 +205,12 @@ namespace DosLenguas
 			colectionBocablos = db.GetCollection("bocablos");
 			var Palabras = colectionBocablos.AsQueryable<Word>();
 			var res = from c in Palabras
-			          where c.Esp.ToUpper()== nword.Esp.ToUpper() && c.Ing.ToUpper()==nword.Ing.ToUpper())
+			          where c.Esp.ToUpper()== nword.Esp.ToUpper() && c.Ing.ToUpper()==nword.Ing.ToUpper()
 			          select c;
 			//pasamos los resultados a la lista
 			if(res.Count()>=1){
 				foreach (Word element in res) {
+					Debug.WriteLine("primer valor encontrado: "+res.First().ToJson());
 					Debug.WriteLine("IsExist diccionario :"+element.ToJson());
 				}
 				return true;
