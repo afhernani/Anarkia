@@ -28,6 +28,7 @@ namespace DosLenguas
 		static MongoServer mongo;
 		MongoDatabase db;
 		const string basedatos = "dic";
+		const string tabla = "bocablos";
 		MongoCollection colectionBocablos;
 		bool engToEsp = true;
 
@@ -177,10 +178,40 @@ namespace DosLenguas
 		{
 			//TODO: aqui recibimos la palabra, comprobamos que existe en
 			//el diccionario y si no existe la añadimos si no, no.
-			MessageBox.Show("Procesamos en el " +
+			Debug.WriteLine("Procesamos en el " +
 			                "formulario principal " +
 			                "la palabra " + nword.ToJson());
+			//comprobar si la base de datos está activa.
+			if(db!=null){
+				if(!IsExist(nword)){
+					//No existe, adicionamos al diccionario
+				}
+			}
+			//comprobar si la palabra ya existe en el la base de datos
+			
+			//si existe no la añadimos.
+			
+			//si no existe añadirla
+			
+			//fin.
 		}
 		#endregion
+		public bool IsExist(Word nword){
+			
+			colectionBocablos = db.GetCollection("bocablos");
+			var Palabras = colectionBocablos.AsQueryable<Word>();
+			var res = from c in Palabras
+			          where c.Esp.ToUpper()== nword.Esp.ToUpper() && c.Ing.ToUpper()==nword.Ing.ToUpper())
+			          select c;
+			//pasamos los resultados a la lista
+			if(res.Count()>=1){
+				foreach (Word element in res) {
+					Debug.WriteLine("IsExist diccionario :"+element.ToJson());
+				}
+				return true;
+			}
+			return false;
+		}
 	}
+	
 }
