@@ -74,6 +74,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wit-test", "Wit-test\Wit-te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wit.Neuro", "Wit.Neuro\Wit.Neuro.csproj", "{9386578D-C9D1-4B44-B8DA-8B14689F3585}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wit.Controls", "Wit.Controls\Wit.Controls.csproj", "{A4F8CACB-EBA6-49D5-8CCD-184E0AC55FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bookEntry", "bookEntry\bookEntry.csproj", "{F65C9C6C-8CA8-47E8-B824-08AEF76E42F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -220,5 +224,13 @@ Global
 		{9386578D-C9D1-4B44-B8DA-8B14689F3585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9386578D-C9D1-4B44-B8DA-8B14689F3585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9386578D-C9D1-4B44-B8DA-8B14689F3585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F8CACB-EBA6-49D5-8CCD-184E0AC55FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F8CACB-EBA6-49D5-8CCD-184E0AC55FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F8CACB-EBA6-49D5-8CCD-184E0AC55FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F8CACB-EBA6-49D5-8CCD-184E0AC55FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65C9C6C-8CA8-47E8-B824-08AEF76E42F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65C9C6C-8CA8-47E8-B824-08AEF76E42F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65C9C6C-8CA8-47E8-B824-08AEF76E42F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65C9C6C-8CA8-47E8-B824-08AEF76E42F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
