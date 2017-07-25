@@ -44,12 +44,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivationFuntion\BipolarSigmoidFunction.cs" />
+    <Compile Include="ActivationFuntion\IActivationFunction.cs" />
+    <Compile Include="ActivationFuntion\SigmoidFunction.cs" />
+    <Compile Include="ActivationFuntion\ThresholdFunction.cs" />
+    <Compile Include="Layers\ActivationLayer.cs" />
+    <Compile Include="Layers\DistanceLayer.cs" />
+    <Compile Include="Layers\Layer.cs" />
+    <Compile Include="Learning\BackPropagationLearning.cs" />
+    <Compile Include="Learning\DeltaRuleLearning.cs" />
+    <Compile Include="Learning\ElasticNetworkLearning.cs" />
+    <Compile Include="Learning\ISupervisedLearning.cs" />
+    <Compile Include="Learning\IUnsupervisedLearning.cs" />
+    <Compile Include="Learning\PerceptronLearning.cs" />
+    <Compile Include="Learning\SOMLearning.cs" />
+    <Compile Include="Networks\ActivationNetwork.cs" />
+    <Compile Include="Networks\DistanceNetwork.cs" />
+    <Compile Include="Networks\Network.cs" />
     <Compile Include="Neurons\ActivationNeuron.cs" />
     <Compile Include="Neurons\DistanceNeuron.cs" />
     <Compile Include="Neurons\Neuron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ActivationFuntion" />
+    <Folder Include="Learning" />
+    <Folder Include="Layers" />
+    <Folder Include="Networks" />
+    <Folder Include="Images" />
     <Folder Include="Neurons" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +79,11 @@
       <Project>{f3f01850-3fcd-4b93-b0c5-7c246ff82bd7}</Project>
       <Name>Wit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\sigmoid.bmp" />
+    <None Include="Images\sigmoid_bipolar.bmp" />
+    <None Include="Images\threshold.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

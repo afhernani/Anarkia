@@ -7,7 +7,7 @@
  */
 
 
-namespace Wit.Neuro.Neurons
+namespace Wit.Neuro
 {
 	using System;
 	using Wit.Core;
