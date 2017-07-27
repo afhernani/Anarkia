@@ -112,9 +112,9 @@ namespace Wit.Controls
 		/// 
 		/// <param name="pe">Data for Paint event</param>
 		/// 
-		protected override void OnPaint( PaintEventArgs pe )
+		protected override void OnPaint( PaintEventArgs e )
 		{
-			Graphics	g = pe.Graphics;
+			Graphics	g = e.Graphics;
 			int			clientWidth = ClientRectangle.Width;
 			int			clientHeight = ClientRectangle.Height;
 
@@ -228,7 +228,7 @@ namespace Wit.Controls
 			}
 
 			// Calling the base class OnPaint
-			base.OnPaint(pe);
+			base.OnPaint(e);
 		}
 
 		/// <summary>

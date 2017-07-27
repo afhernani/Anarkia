@@ -25,6 +25,7 @@ namespace DosLenguas
 		private System.Windows.Forms.RadioButton rdIng;
 		private System.Windows.Forms.RadioButton rdEsp;
 		private System.Windows.Forms.RadioButton rdAdd;
+		private System.Windows.Forms.Button btnModif;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -58,6 +59,7 @@ namespace DosLenguas
 			this.rdIng = new System.Windows.Forms.RadioButton();
 			this.rdEsp = new System.Windows.Forms.RadioButton();
 			this.rdAdd = new System.Windows.Forms.RadioButton();
+			this.btnModif = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btStart
@@ -174,11 +176,23 @@ namespace DosLenguas
 			this.rdAdd.UseVisualStyleBackColor = true;
 			this.rdAdd.CheckedChanged += new System.EventHandler(this.RdAddCheckedChanged);
 			// 
+			// btnModif
+			// 
+			this.btnModif.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnModif.Location = new System.Drawing.Point(384, 5);
+			this.btnModif.Name = "btnModif";
+			this.btnModif.Size = new System.Drawing.Size(43, 24);
+			this.btnModif.TabIndex = 11;
+			this.btnModif.Text = "M";
+			this.btnModif.UseVisualStyleBackColor = true;
+			this.btnModif.Click += new System.EventHandler(this.BtnModifClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(439, 279);
+			this.Controls.Add(this.btnModif);
 			this.Controls.Add(this.rdAdd);
 			this.Controls.Add(this.rdEsp);
 			this.Controls.Add(this.rdIng);

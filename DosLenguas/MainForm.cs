@@ -77,7 +77,7 @@ namespace DosLenguas
 				colectionBocablos = db.GetCollection("bocablos");
 				var Palabras = colectionBocablos.AsQueryable<Word>();
 				var res = from c in Palabras
-				          where c.Esp.ToUpper()== textEsp.Text.ToUpper() //|| c.Esp.ToLower().StartsWith(textEsp.Text.ToLower())
+				          where c.Esp.ToUpper() == textEsp.Text.ToUpper() //|| c.Esp.ToLower().StartsWith(textEsp.Text.ToLower())
 				          select c;
 				//pasamos los resultados a la lista
 				
@@ -85,9 +85,9 @@ namespace DosLenguas
 					Debug.WriteLine(element.ToJson());
 					richTextBox.Text += element.ToJson();
 				}
-				if(engToEsp==false){
+				if (engToEsp == false) {
 					textIng.Text = "";
-					if(res.Count()>=1){
+					if (res.Count() >= 1) {
 						
 						textIng.Text = res.First().Ing;
 					}
@@ -108,17 +108,17 @@ namespace DosLenguas
 				colectionBocablos = db.GetCollection("bocablos");
 				var Palabras = colectionBocablos.AsQueryable<Word>();
 				var res = from c in Palabras
-					where c.Ing.ToUpper()==textIng.Text.ToUpper()
-				           select c;
+				          where c.Ing.ToUpper() == textIng.Text.ToUpper()
+				          select c;
 				//pasamos los resultados a la lista
 				
 				foreach (Word element in res) {
 					Debug.WriteLine(element.ToJson());
 					richTextBox.Text += element.ToJson();
 				}
-				if(engToEsp){
+				if (engToEsp) {
 					textEsp.Text = "";
-				if(res.Count()>=1){
+					if (res.Count() >= 1) {
 						
 						textEsp.Text = res.First().Esp;
 					}
@@ -131,8 +131,7 @@ namespace DosLenguas
 			if (db == null)
 				return; //no esta inicializada la db mongo.
 			colectionBocablos = db.GetCollection("bocablos");
-			if (!String.IsNullOrEmpty(textIng.Text) && !String.IsNullOrEmpty(textEsp.Text)) 
-			{
+			if (!String.IsNullOrEmpty(textIng.Text) && !String.IsNullOrEmpty(textEsp.Text)) {
 				Word wd = new Word(textEsp.Text, textIng.Text);
 				colectionBocablos.Insert(wd);
 			}
@@ -179,16 +178,16 @@ namespace DosLenguas
 			//TODO: aqui recibimos la palabra, comprobamos que existe en
 			//el diccionario y si no existe la añadimos si no, no.
 			Debug.WriteLine("Procesamos en el " +
-			                "formulario principal " +
-			                "la palabra " + nword.ToJson());
+			"formulario principal " +
+			"la palabra " + nword.ToJson());
 			//comprobar si la base de datos está activa.
-			if(db!=null){
-				if(!IsExist(nword)){
+			if (db != null) {
+				if (!IsExist(nword)) {
 					//No existe, adicionamos al diccionario
 					colectionBocablos = db.GetCollection("bocablos");
 					colectionBocablos.Insert(nword);
 					Debug.WriteLine("Adicionada al diccionario " +
-					                "la palabra " + nword.ToJson());
+					"la palabra " + nword.ToJson());
 				}
 			}
 			//comprobar si la palabra ya existe en el la base de datos
@@ -200,22 +199,45 @@ namespace DosLenguas
 			//fin.
 		}
 		#endregion
-		public bool IsExist(Word nword){
+		public bool IsExist(Word nword)
+		{
 			
 			colectionBocablos = db.GetCollection("bocablos");
 			var Palabras = colectionBocablos.AsQueryable<Word>();
 			var res = from c in Palabras
-			          where c.Esp.ToUpper()== nword.Esp.ToUpper() && c.Ing.ToUpper()==nword.Ing.ToUpper()
+			          where c.Esp.ToUpper() == nword.Esp.ToUpper() && c.Ing.ToUpper() == nword.Ing.ToUpper()
 			          select c;
 			//pasamos los resultados a la lista
-			if(res.Count()>=1){
+			if (res.Count() >= 1) {
 				foreach (Word element in res) {
-					Debug.WriteLine("primer valor encontrado: "+res.First().ToJson());
-					Debug.WriteLine("IsExist diccionario :"+element.ToJson());
+					richTextBox.Text="primer valor encontrado: " + res.First().ToJson();
+					richTextBox.Text+="IsExist diccionario :" + element.ToJson();
 				}
 				return true;
 			}
 			return false;
+		}
+		void BtnModifClick(object sender, EventArgs e)
+		{
+			if (rdAdd.Checked && db != null) {
+				colectionBocablos = db.GetCollection("bocablos");
+				var Palabras = colectionBocablos.AsQueryable<Word>();
+				var res = from c in Palabras
+				         where c.Ing.ToUpper() == textIng.Text.ToUpper()
+				         select c;
+				//pasamos los resultados a la lista
+				if (res.Count() >= 1) {
+					foreach (Word element in res) {
+						richTextBox.Text=("primer valor encontrado: " + res.First().ToJson());
+						richTextBox.Text+=("IsExist diccionario :" + element.ToJson());
+					}
+					Word d = res.First();
+					d.Esp = textEsp.Text; //modificamos el registro
+					colectionBocablos.Save(d); //y guardamos el registro
+					richTextBox.Text=("registro modificado con éxito: " + d.ToJson());
+				}
+				
+			}
 		}
 	}
 	
