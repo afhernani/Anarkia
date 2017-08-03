@@ -26,6 +26,8 @@ namespace DosLenguas
 		private System.Windows.Forms.RadioButton rdEsp;
 		private System.Windows.Forms.RadioButton rdAdd;
 		private System.Windows.Forms.Button btnModif;
+		private System.Windows.Forms.RichTextBox richTextCom;
+		private System.Windows.Forms.Button btnpracticaverbos;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -60,6 +62,8 @@ namespace DosLenguas
 			this.rdEsp = new System.Windows.Forms.RadioButton();
 			this.rdAdd = new System.Windows.Forms.RadioButton();
 			this.btnModif = new System.Windows.Forms.Button();
+			this.richTextCom = new System.Windows.Forms.RichTextBox();
+			this.btnpracticaverbos = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btStart
@@ -138,9 +142,9 @@ namespace DosLenguas
 			// richTextBox
 			// 
 			this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.richTextBox.Location = new System.Drawing.Point(12, 118);
+			this.richTextBox.Location = new System.Drawing.Point(12, 210);
 			this.richTextBox.Name = "richTextBox";
-			this.richTextBox.Size = new System.Drawing.Size(343, 149);
+			this.richTextBox.Size = new System.Drawing.Size(343, 124);
 			this.richTextBox.TabIndex = 7;
 			this.richTextBox.Text = "";
 			// 
@@ -187,11 +191,33 @@ namespace DosLenguas
 			this.btnModif.UseVisualStyleBackColor = true;
 			this.btnModif.Click += new System.EventHandler(this.BtnModifClick);
 			// 
+			// richTextCom
+			// 
+			this.richTextCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.richTextCom.Location = new System.Drawing.Point(12, 119);
+			this.richTextCom.Name = "richTextCom";
+			this.richTextCom.Size = new System.Drawing.Size(343, 78);
+			this.richTextCom.TabIndex = 12;
+			this.richTextCom.Text = "";
+			// 
+			// btnpracticaverbos
+			// 
+			this.btnpracticaverbos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnpracticaverbos.Location = new System.Drawing.Point(65, 5);
+			this.btnpracticaverbos.Name = "btnpracticaverbos";
+			this.btnpracticaverbos.Size = new System.Drawing.Size(43, 24);
+			this.btnpracticaverbos.TabIndex = 13;
+			this.btnpracticaverbos.Text = "V";
+			this.btnpracticaverbos.UseVisualStyleBackColor = true;
+			this.btnpracticaverbos.Click += new System.EventHandler(this.BtnpracticaverbosClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(439, 279);
+			this.ClientSize = new System.Drawing.Size(439, 346);
+			this.Controls.Add(this.btnpracticaverbos);
+			this.Controls.Add(this.richTextCom);
 			this.Controls.Add(this.btnModif);
 			this.Controls.Add(this.rdAdd);
 			this.Controls.Add(this.rdEsp);

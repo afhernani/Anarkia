@@ -70,6 +70,10 @@
     <Compile Include="FormFileAdd.Designer.cs">
       <DependentUpon>FormFileAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVerbos.cs" />
+    <Compile Include="FormVerbos.Designer.cs">
+      <DependentUpon>FormVerbos.cs</DependentUpon>
+    </Compile>
     <Compile Include="IForm.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
@@ -77,6 +81,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="typeword.cs" />
     <Compile Include="Word.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormFileAdd.resx">
       <DependentUpon>FormFileAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVerbos.resx">
+      <DependentUpon>FormVerbos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

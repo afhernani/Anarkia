@@ -71,6 +71,7 @@ namespace DosLenguas
 			if (colectionBocablos == null)
 				return;
 			richTextBox.Clear();
+			richTextCom.Clear();
 			if (rdAdd.Checked)
 				return;
 			if (!String.IsNullOrEmpty(textEsp.Text)) {
@@ -90,6 +91,7 @@ namespace DosLenguas
 					if (res.Count() >= 1) {
 						
 						textIng.Text = res.First().Ing;
+						richTextCom.Text = res.First().Commen;
 					}
 				}
 			}
@@ -102,6 +104,7 @@ namespace DosLenguas
 			if (colectionBocablos == null)
 				return;
 			richTextBox.Clear();
+			richTextCom.Clear();
 			if (rdAdd.Checked)
 				return;
 			if (!String.IsNullOrEmpty(textIng.Text)) {
@@ -121,6 +124,7 @@ namespace DosLenguas
 					if (res.Count() >= 1) {
 						
 						textEsp.Text = res.First().Esp;
+						richTextCom.Text = res.First().Commen;
 					}
 				}
 				
@@ -128,12 +132,15 @@ namespace DosLenguas
 		}
 		void BtnInglesClick(object sender, EventArgs e)
 		{
+			
 			if (db == null)
 				return; //no esta inicializada la db mongo.
 			colectionBocablos = db.GetCollection("bocablos");
 			if (!String.IsNullOrEmpty(textIng.Text) && !String.IsNullOrEmpty(textEsp.Text)) {
-				Word wd = new Word(textEsp.Text, textIng.Text);
-				colectionBocablos.Insert(wd);
+				Word wd = new Word(textEsp.Text, textIng.Text, richTextCom.Text);
+				var writeresult =colectionBocablos.Insert(wd);
+				richTextBox.Clear();
+				richTextBox.Text = writeresult.ToJson().ToString();
 			}
 			textIng.Clear();
 			textEsp.Clear();
@@ -217,6 +224,13 @@ namespace DosLenguas
 			}
 			return false;
 		}
+		/// <summary>
+		/// hay que analizar esto con más atención puede
+		/// que este dando lugar a intercruzamiento entre
+		/// los registros.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		void BtnModifClick(object sender, EventArgs e)
 		{
 			if (rdAdd.Checked && db != null) {
@@ -233,11 +247,31 @@ namespace DosLenguas
 					}
 					Word d = res.First();
 					d.Esp = textEsp.Text; //modificamos el registro
+					d.Commen = richTextCom.Text;
+					colectionBocablos.Save(d); //y guardamos el registro
+					richTextBox.Text=("registro modificado con éxito: " + d.ToJson());
+				}
+				var resing = from c in Palabras
+				         where c.Esp.ToUpper() == textEsp.Text.ToUpper()
+				         select c;
+				if (resing.Count() >= 1) {
+					foreach (Word element in resing) {
+						richTextBox.Text=("primer valor encontrado: " + resing.First().ToJson());
+						richTextBox.Text+=("IsExist diccionario :" + element.ToJson());
+					}
+					Word d = resing.First();
+					d.Ing = textIng.Text; //modificamos el registro
+					d.Commen = richTextCom.Text;
 					colectionBocablos.Save(d); //y guardamos el registro
 					richTextBox.Text=("registro modificado con éxito: " + d.ToJson());
 				}
 				
 			}
+		}
+		void BtnpracticaverbosClick(object sender, EventArgs e)
+		{
+			FormVerbos fv = new FormVerbos();
+			fv.Show(this);
 		}
 	}
 	

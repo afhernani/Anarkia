@@ -21,9 +21,9 @@ namespace OrderFileMovie
 		[STAThread]
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
-			SeryMasterBlock();
 			// TODO: Implement Functionality Here
+			/* Console.WriteLine("Hello World!");
+			SeryMasterBlock();
 			Console.WriteLine("descerializamos");
 			DeseMasterBlock();
 			Console.WriteLine("Serializado en js a fichero ...");
@@ -32,7 +32,7 @@ namespace OrderFileMovie
 			DeserializaJson();
 			
 			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
+			Console.ReadKey(true);*/
 			{
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);

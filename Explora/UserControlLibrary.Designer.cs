@@ -36,11 +36,16 @@ namespace Explora
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.SuspendLayout();
 			// 
 			// UserControlLibrary
 			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Name = "UserControlLibrary";
+			this.Size = new System.Drawing.Size(174, 110);
+			this.ResumeLayout(false);
+
 		}
 	}
 }

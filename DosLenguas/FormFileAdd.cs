@@ -79,9 +79,9 @@ namespace DosLenguas
 		void ProcesarCadena(string cadena){
 			
 			if(!String.IsNullOrEmpty(cadena)){
-				string esp, ing;
+				string esp, ing, comt;
 				string[] fillout = cadena.Split(':');
-				if(fillout.Length==2){
+				if(fillout.Length>=2){
 					esp = fillout[1];
 					ing = fillout[0];
 					
@@ -90,7 +90,14 @@ namespace DosLenguas
 					
 					esp = esp.Trim('.');
 					esp = esp.Trim(' ');
-					LunchWord(esp, ing);
+					if(fillout.Length==3){
+						comt = fillout[2];
+						comt = comt.Trim('.');
+						comt = comt.Trim(' ');
+							LunchWord(esp, ing, comt);
+					}
+					if(fillout.Length==2)
+						LunchWord(esp, ing);
 				}else{
 					MessageBox.Show("No existe paridad en " +
 					                "el texto de cadena " + cadena);
@@ -104,6 +111,13 @@ namespace DosLenguas
 			IForm forminterfas = this.Owner as IForm;
 			if (forminterfas != null)
 				forminterfas.AddWordFromFile(new Word(esp, ing));
+		}
+		void LunchWord(string esp, string ing, string comt){
+			//hacemos un castin y transformamos el formulario en una
+			//interfaz.
+			IForm forminterfas = this.Owner as IForm;
+			if (forminterfas != null)
+				forminterfas.AddWordFromFile(new Word(esp, ing, comt));
 		}
 	}
 }
