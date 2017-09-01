@@ -23,17 +23,17 @@ namespace DosLenguas
 	public partial class FormVerbos : Form
 	{
 		string[] verbosIregulares = {"surgir", "despertar(se)", "soportar", "golpear", "convertirse en", 
-			"empezar", "doblar(se)", "apostar", "pujar", "encuadernar", "morder", 
-			"sangrar", "soplar", "romper", "criar", "traer", "construir", "quemar(se)", "estallar",
+			"empezar", "doblar (se)", "apostar", "pujar", "encuadernar", "morder", 
+			"sangrar", "soplar", "romper", "criar", "traer", "construir", "quemar (se)", "estallar",
 			"comprar", "tirar", "coger", "elegir", "aferrarse", "venir", "costar", "arrastrar", "cortar", 
-			"tratar", "cavar", "hacer", "dibujar", "soñar", "beber", "conducir", "comer", "caer(se)", 
-			"alimentar", "sentirse", "pelearse", "encontrar", "huir", "volar", "prohibir", "olvidar(se)",
-			"perdonar", "helar(se)", "conseguir", "dar", "irse", "moler", "crecer", "colgar", "tener", 
-			"escuchar", "esconder(se)", "golpear", "agarrar(se)", "daño", "guardar", "arrodillarse", 
+			"tratar", "cavar", "hacer", "dibujar", "soñar", "beber", "conducir", "comer", "caer", 
+			"alimentar", "sentirse", "pelearse", "encontrar", "huir", "volar", "prohibir", "olvidar (se)",
+			"perdonar", "helar", "conseguir", "dar", "irse", "moler", "crecer", "colgar", "tener", 
+			"escuchar", "esconder (se)", "golpear", "agarrar (se)", "daño", "guardar", "arrodillarse", 
 			"conocer", "poner", "llevar", "apoyarse", "brincar", "aprender", "dejar", "prestar", 
 			"permitir", "echarse", "encender(se)", "perder", "hacer", "significar", 
-			"encontrar(se)", "vencer", "pagar", "poner", "leer", "montar", "sonar", 
-			"levantarse", "correr", "serrar", "decir", "ver", "buscar", "vender(se)",
+			"encontrar", "vencer (se)", "pagar", "poner", "leer", "montar", "sonar", 
+			"levantarse", "correr", "serrar", "decir", "ver", "buscar", "vender",
 			"enviar", "poner", "coser", "agitar", "esquilar", "brillar", "disparar", "mostrar", 
 			"encoger(se)", "cerrar(se)", "cantar"
 		};
