@@ -28,7 +28,7 @@ namespace DosLenguas
 			"comprar", "tirar", "coger", "elegir", "aferrarse", "venir", "costar", "arrastrar", "cortar", 
 			"tratar", "cavar", "hacer", "dibujar", "soñar", "beber", "conducir", "comer", "caer", 
 			"alimentar", "sentirse", "pelearse", "encontrar", "huir", "volar", "prohibir", "olvidar (se)",
-			"perdonar", "helar", "conseguir", "dar", "irse", "moler", "crecer", "colgar", "tener", 
+			"perdonar", "helar(se)", "conseguir", "dar", "ir", "moler", "crecer", "colgar", "tener", 
 			"escuchar", "esconder (se)", "golpear", "agarrar (se)", "daño", "guardar", "arrodillarse", 
 			"conocer", "poner", "llevar", "apoyarse", "brincar", "aprender", "dejar", "prestar", 
 			"permitir", "echarse", "encender(se)", "perder", "hacer", "significar", 
