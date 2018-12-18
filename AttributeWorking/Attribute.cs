@@ -39,7 +39,17 @@ namespace AttributeWorking
                              select t;
             foreach (Type t in testSuites)
             {
-                richTextBox1.AppendText(t.Name + "\n");
+                richTextBox1.AppendText("running test in suite "+t.Name + "\n");
+                var testMethods =
+                    from m in t.GetMethods()
+                    where m.GetCustomAttributes(false).Any(a => a is TestMethodAttribute)
+                    select m;
+                //instanciamos un objeto de esta clase
+                object testSuiteInstance = Activator.CreateInstance(t);
+                foreach (MethodInfo mInfo in testMethods)
+                {
+                    mInfo.Invoke(testSuiteInstance, new object[] { richTextBox1 });
+                }
             }
         }
     }
